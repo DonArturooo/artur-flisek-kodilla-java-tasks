@@ -4,22 +4,14 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 import java.math.BigDecimal;
-import java.math.BigInteger;
 import java.math.RoundingMode;
-import java.util.ArrayList;
 import java.util.List;
 
 @SpringBootApplication
 public class TasksApplication {
 
 	public static void main(String[] args) {
-//		SpringApplication.run(TasksApplication.class, args);
-
-        List<Integer> grades = new ArrayList<>(List.of(3, 1, 1, 5, 6, 4));
-        List<Integer> weights = new ArrayList<>(List.of(4, 6, 8, 4, 4, 10));
-
-        weightAverage(grades, weights);
-
+		SpringApplication.run(TasksApplication.class, args);
 	}
     private static void weightAverage(List<Integer> grades, List<Integer> weights) {
         if (grades.isEmpty() || weights.isEmpty()) {
