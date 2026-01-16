@@ -6,9 +6,16 @@ import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
+import java.util.Optional;
 
 @Repository
 @NonNullApi
 public interface TaskRepository extends CrudRepository<Task, Long> {
     List<Task> findAll();
+
+    Optional<Task> findById(Long id);
+
+    Task save(Task task);
+
+    void deleteById(Long id);
 }

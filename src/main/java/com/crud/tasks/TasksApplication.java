@@ -1,6 +1,5 @@
 package com.crud.tasks;
 
-import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 import java.math.BigDecimal;
@@ -11,7 +10,9 @@ import java.util.List;
 public class TasksApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(TasksApplication.class, args);
+//		SpringApplication.run(TasksApplication.class, args);
+
+        System.out.println(isFirstNumber(4));
 	}
     private static void weightAverage(List<Integer> grades, List<Integer> weights) {
         if (grades.isEmpty() || weights.isEmpty()) {
@@ -44,4 +45,17 @@ public class TasksApplication {
         System.out.println("Average weight: " + sum.divide(weightSum, 2, RoundingMode.HALF_UP));
     }
 
+    public static boolean isFirstNumber(int number) {
+        if(number <= 1) {
+            return false;
+        }
+
+        for (int i = 2; i < number; i++) {
+            if(number % i == 0) {
+                return false;
+            }
+        }
+
+        return true;
+    }
 }
