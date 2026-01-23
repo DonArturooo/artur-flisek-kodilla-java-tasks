@@ -5,6 +5,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 import java.math.BigDecimal;
 import java.math.RoundingMode;
+import java.util.Comparator;
 import java.util.List;
 
 @SpringBootApplication
@@ -56,5 +57,10 @@ public class TasksApplication {
         }
 
         return true;
+    }
+
+    public static List<Integer> segregate(List<Integer> numbers) throws Exception {
+        if(numbers.isEmpty()) throw new Exception("Pusta lista");
+        return numbers.stream().sorted(Comparator.comparingInt(a -> a)).toList();
     }
 }
