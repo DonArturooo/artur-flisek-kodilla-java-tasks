@@ -1,5 +1,5 @@
 FROM eclipse-temurin:21-jdk AS build
-RUN microdnf install findutils
+RUN apt-get install findutils
 WORKDIR /app
 COPY build.gradle .
 COPY settings.gradle .
