@@ -1,5 +1,6 @@
 package com.crud.tasks;
 
+import io.swagger.v3.oas.annotations.OpenAPIDefinition;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
@@ -9,6 +10,7 @@ import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
 
+@OpenAPIDefinition
 @SpringBootApplication
 public class TasksApplication {
 
