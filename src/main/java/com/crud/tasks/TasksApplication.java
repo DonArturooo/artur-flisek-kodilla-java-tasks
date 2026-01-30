@@ -12,9 +12,10 @@ import java.util.List;
 @SpringBootApplication
 public class TasksApplication {
 
-	public static void main(String[] args) {
-		SpringApplication.run(TasksApplication.class, args);
-	}
+    public static void main(String[] args) {
+        SpringApplication.run(TasksApplication.class, args);
+    }
+
     private static void weightAverage(List<Integer> grades, List<Integer> weights) {
         if (grades.isEmpty() || weights.isEmpty()) {
             throw new Error("List of grades and weights cannot be empty");
@@ -40,7 +41,7 @@ public class TasksApplication {
         BigDecimal weightSum = BigDecimal.ZERO;
         for (int i = 0; i < grades.size(); i++) {
             sum = sum.add(BigDecimal.valueOf(grades.get(i))
-                                    .multiply(BigDecimal.valueOf(weights.get(i))));
+                    .multiply(BigDecimal.valueOf(weights.get(i))));
             weightSum = weightSum.add(BigDecimal.valueOf(weights.get(i)));
         }
 
@@ -66,8 +67,8 @@ public class TasksApplication {
             throw new Exception("Pusta lista");
         }
         return numbers.stream()
-                      .sorted(Comparator.comparingInt(a -> a))
-                      .toList();
+                .sorted(Comparator.comparingInt(a -> a))
+                .toList();
     }
 
     public static List<Integer> segregateWithGas(List<Integer> numbers) throws Exception {
@@ -90,4 +91,19 @@ public class TasksApplication {
         }
         return sorted;
     }
+
+    public static int convertStringToInteger(String input) {
+        if (input == null || input.length() != 1) {
+            throw new IllegalArgumentException("Podaj dokładnie jeden znak");
+        }
+
+        char c = input.charAt(0);
+
+        if (!Character.isDigit(c)) {
+            throw new IllegalArgumentException("Niedozwolony znak");
+        }
+
+        return Character.getNumericValue(c);
+    }
+
 }
