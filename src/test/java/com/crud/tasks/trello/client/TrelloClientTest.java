@@ -36,6 +36,7 @@ class TrelloClientTest {
         when(trelloConfig.getTrelloApiEndpoint()).thenReturn("http://test.com");
         when(trelloConfig.getTrelloAppKey()).thenReturn("test");
         when(trelloConfig.getTrelloToken()).thenReturn("test");
+        when(trelloConfig.getTrelloUsername()).thenReturn("test");
 
         TrelloBoardDto[] trelloBoards = new TrelloBoardDto[1];
         trelloBoards[0] = new TrelloBoardDto("test_id", "Kodilla", new ArrayList<>());
@@ -50,10 +51,9 @@ class TrelloClientTest {
         //then
         assertAll(
                 () -> assertEquals(1, fetchedTrelloBoards.size()),
-                () -> assertEquals("test", fetchedTrelloBoards.getFirst().getId()),
+                () -> assertEquals("test_id", fetchedTrelloBoards.getFirst().getId()),
                 () -> assertEquals("Kodilla", fetchedTrelloBoards.getFirst().getName()),
                 () -> assertEquals(new ArrayList<>(), fetchedTrelloBoards.getFirst().getLists())
-
         );
     }
 
@@ -63,6 +63,7 @@ class TrelloClientTest {
         when(trelloConfig.getTrelloApiEndpoint()).thenReturn("http://test.com");
         when(trelloConfig.getTrelloAppKey()).thenReturn("test");
         when(trelloConfig.getTrelloToken()).thenReturn("test");
+        when(trelloConfig.getTrelloUsername()).thenReturn("test");
 
         URI uri = new URI("http://test.com/members/test/boards?key=test&token=test&fields=name,id&lists=all");
 
@@ -110,7 +111,6 @@ class TrelloClientTest {
                 () -> assertEquals("1", newCard.getId()),
                 () -> assertEquals("Test task", newCard.getName()),
                 () -> assertEquals("http://test.com", newCard.getShortUrl())
-
         );
     }
 }
