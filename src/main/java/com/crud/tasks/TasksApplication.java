@@ -3,6 +3,7 @@ package com.crud.tasks;
 import io.swagger.v3.oas.annotations.OpenAPIDefinition;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.scheduling.annotation.EnableScheduling;
 
 import java.math.BigDecimal;
 import java.math.RoundingMode;
@@ -10,6 +11,7 @@ import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
 
+@EnableScheduling
 @OpenAPIDefinition
 @SpringBootApplication
 public class TasksApplication {
@@ -94,7 +96,7 @@ public class TasksApplication {
         return sorted;
     }
 
-    public static int convertStringToInteger(String input) {
+    public static int convertStringToInt(String input) {
         if (input == null || input.length() != 1) {
             throw new IllegalArgumentException("Podaj dokładnie jeden znak");
         }
@@ -106,6 +108,27 @@ public class TasksApplication {
         }
 
         return Character.getNumericValue(c);
+    }
+
+    public static int convertStringToInteger(String input) {
+        if (input == null || input.isBlank()) {
+            throw new IllegalArgumentException("Tekst jest pusty");
+        }
+
+        int result = 0;
+        for(int i = 0; i < input.length(); i++) {
+            char c = input.charAt(i);
+
+            if (!Character.isDigit(c)) {
+                throw new IllegalArgumentException("Niedozwolony znak");
+            }
+
+            int digit = Character.getNumericValue(c);
+
+            result = result * 10 + digit;
+        }
+
+        return result;
     }
 
 }
