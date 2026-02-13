@@ -131,4 +131,38 @@ public class TasksApplication {
         return result;
     }
 
+    public static String convertIntegerToHex(int input) {
+        if (input < 0) {
+            throw new IllegalArgumentException("Liczba musi być nieujemna");
+        }
+
+        if (input == 0) {
+            return "0";
+        }
+
+//        StringBuilder result = new StringBuilder();
+//
+//
+//        for (int i = input; i > 0; i /= 16) {
+//            int remainder = i % 16;
+//            char hexDigit = (remainder < 10) ? (char) ('0' + remainder) : (char) ('A' + remainder - 10);
+//            result.insert(0, hexDigit);
+//        }
+//
+//        return result.toString();
+
+        return convertIntegerToHex(input).toUpperCase();
+    }
+
+    private static String convertIntegerToHexHelper(int input) {
+        if (input == 0) {
+            return "";
+        }
+
+        int remainder = input % 16;
+        char hexDigit = (remainder < 10) ? (char) ('0' + remainder) : (char) ('A' + remainder - 10);
+
+        return convertIntegerToHexHelper(input/16) + hexDigit;
+    }
+
 }
